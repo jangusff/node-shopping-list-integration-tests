@@ -26,7 +26,7 @@ router.get("/", (req, res) => {
 // log error and return 400 status code with hepful message.
 // if okay, add new item, and return it with a status 201.
 router.post("/", (req, res) => {
-  // ensure `name` and `budget` are in request body
+  // ensure `name` and `ingredients` are in request body
   const requiredFields = ["name", "ingredients"];
   for (let i = 0; i < requiredFields.length; i++) {
     const field = requiredFields[i];
@@ -43,7 +43,7 @@ router.post("/", (req, res) => {
 // Delete recipes (by id)!
 router.delete("/:id", (req, res) => {
   Recipes.delete(req.params.id);
-  console.log(`Deleted shopping list item \`${req.params.ID}\``);
+  console.log(`Deleted recipe item \`${req.params.ID}\``);
   res.status(204).end();
 });
 
@@ -69,7 +69,7 @@ router.put("/:id", (req, res) => {
     console.error(message);
     return res.status(400).send(message);
   }
-  console.log(`Updating shopping list item \`${req.params.id}\``);
+  console.log(`Updating recipe item \`${req.params.id}\``);
   Recipes.update({
     id: req.params.id,
     name: req.body.name,
