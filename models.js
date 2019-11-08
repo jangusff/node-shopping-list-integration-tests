@@ -51,7 +51,6 @@ function createShoppingList() {
   const storage = Object.create(ShoppingList);
   storage.items = {};
   return storage;
-  
 }
 
 const Recipes = {
